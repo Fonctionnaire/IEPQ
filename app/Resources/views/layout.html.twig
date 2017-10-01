@@ -9,11 +9,18 @@
     {% include 'styleAndScript/style.html.twig' %}
 </head>
 <body>
+{% include 'navbar/navbar.html.twig' %}
 
+<main>
 {% block content %}
 {% endblock %}
-
+</main>
 {% include 'styleAndScript/script.html.twig' %}
+{% block indexScript %}
+{% endblock %}
+<footer>
+
+</footer>
 
 </body>
 </html>
