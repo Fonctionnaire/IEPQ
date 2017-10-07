@@ -3,6 +3,11 @@ header, main, footer {
 }
 
 
+select
+{
+    display: initial !important;
+}
+
 /* NAVIGATION */
 .nav-wrapper
 {
@@ -125,6 +130,16 @@ i.search-icone
     margin-bottom: 15px !important;
     font-size: 1.4em;
 
+}
+
+
+/* INDEX ADMIN */
+.index-admin-container
+{
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 /* MEDIA QUERIE */

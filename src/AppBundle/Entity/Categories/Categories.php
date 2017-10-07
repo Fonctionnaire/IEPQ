@@ -1,16 +1,17 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity\Categories;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * CategoriesServices
+ * Categories
  *
- * @ORM\Table(name="categories_services")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoriesServicesRepository")
+ * @ORM\Table(name="categories_categories")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Categories\CategoriesRepository")
  */
-class CategoriesServices
+class Categories
 {
     /**
      * @var int
@@ -29,25 +30,12 @@ class CategoriesServices
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Services", mappedBy="categorie", cascade={"remove", "persist"})
+     * @var string
+     * @Gedmo\Slug(fields={"nom"})
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $service;
+    private $slug;
 
-    /**
-     * @return mixed
-     */
-    public function getService()
-    {
-        return $this->service;
-    }
-
-    /**
-     * @param mixed $service
-     */
-    public function setService($service)
-    {
-        $this->service = $service;
-    }
 
     /**
      * Get id
@@ -64,7 +52,7 @@ class CategoriesServices
      *
      * @param string $nom
      *
-     * @return CategoriesServices
+     * @return Categories
      */
     public function setNom($nom)
     {
@@ -81,6 +69,30 @@ class CategoriesServices
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Categories
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
 

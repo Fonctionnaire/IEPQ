@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1 class="center">Ajouter un smartphone</h1>
+            {{ form_start(form) }}
+
+            <div>
+                {{ form_label(form.marque) }}
+                {{ form_widget(form.marque) }}
+                {{ form_errors(form.marque) }}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.model) }}
+                {{ form_widget(form.model) }}
+                {{ form_errors(form.model) }}
+            </div>
+            <div class="input-field center">
+                {{ form_widget(form.valider) }}
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

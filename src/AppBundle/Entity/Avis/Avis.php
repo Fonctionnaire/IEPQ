@@ -1,16 +1,16 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity\Avis;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AvisServices
+ * Avis
  *
- * @ORM\Table(name="avis_services")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AvisServicesRepository")
+ * @ORM\Table(name="avis")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AvisRepository")
  */
-class AvisServices
+class Avis
 {
     /**
      * @var int
@@ -29,18 +29,18 @@ class AvisServices
     private $note;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateAjout", type="datetime")
-     */
-    private $dateAjout;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="texte", type="text")
      */
     private $texte;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAjout", type="datetime")
+     */
+    private $dateAjout;
 
     /**
      * @var bool
@@ -50,33 +50,9 @@ class AvisServices
     private $valide;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Services", inversedBy="avis")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $service;
-
-
-
     public function __construct()
     {
         $this->dateAjout = new \DateTime();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getService()
-    {
-        return $this->service;
-    }
-
-    /**
-     * @param mixed $service
-     */
-    public function setService($service)
-    {
-        $this->service = $service;
     }
 
     /**
@@ -94,7 +70,7 @@ class AvisServices
      *
      * @param integer $note
      *
-     * @return AvisServices
+     * @return Avis
      */
     public function setNote($note)
     {
@@ -114,35 +90,11 @@ class AvisServices
     }
 
     /**
-     * Set dateAjout
-     *
-     * @param \DateTime $dateAjout
-     *
-     * @return AvisServices
-     */
-    public function setDateAjout($dateAjout)
-    {
-        $this->dateAjout = $dateAjout;
-
-        return $this;
-    }
-
-    /**
-     * Get dateAjout
-     *
-     * @return \DateTime
-     */
-    public function getDateAjout()
-    {
-        return $this->dateAjout;
-    }
-
-    /**
      * Set texte
      *
      * @param string $texte
      *
-     * @return AvisServices
+     * @return Avis
      */
     public function setTexte($texte)
     {
@@ -162,11 +114,35 @@ class AvisServices
     }
 
     /**
+     * Set dateAjout
+     *
+     * @param \DateTime $dateAjout
+     *
+     * @return Avis
+     */
+    public function setDateAjout($dateAjout)
+    {
+        $this->dateAjout = $dateAjout;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAjout
+     *
+     * @return \DateTime
+     */
+    public function getDateAjout()
+    {
+        return $this->dateAjout;
+    }
+
+    /**
      * Set valide
      *
      * @param boolean $valide
      *
-     * @return AvisServices
+     * @return Avis
      */
     public function setValide($valide)
     {

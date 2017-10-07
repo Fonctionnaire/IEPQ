@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+    <div class="container create-restau-container">
+        <div class="row">
+            <h1 class="center">Ajouter un restaurant</h1>
+            {{ form_start(form) }}
+
+            <div class="input-field">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom) }}
+                {{ form_errors(form.nom) }}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.specialite, 'Spécialité') }}
+                {{ form_widget(form.specialite) }}
+                {{ form_errors(form.specialite) }}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.adresse) }}
+                {{ form_widget(form.adresse) }}
+                {{ form_errors(form.adresse) }}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.cp, 'Code postal') }}
+                {{ form_widget(form.cp) }}
+                {{ form_errors(form.cp) }}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.ville) }}
+                {{ form_widget(form.ville) }}
+                {{ form_errors(form.ville) }}
+            </div>
+            <div class="center">
+                {{ form_row(form.valider) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
