@@ -1,6 +1,13 @@
 <header>
+    <div class="navbar-fixed z-depth-2">
     <nav>
-        <div class="nav-wrapper light-blue lighten-2">
+
+        <div class="nav-wrapper white ">
+            <div class="nav-logo left">
+                <a href="{{ path('home') }}">
+                    <img src="{{ asset('images/Logo_Thythy100.jpg') }}" alt="il en pense quoi ?">
+                </a>
+            </div>
             <div class="search">
                 <div class="search-wrapper">
                     <input id="search" type="search" class="grey lighten-4 black-text" placeholder="Rechercher">
@@ -8,15 +15,18 @@
                     <div class="search-results"></div>
                 </div>
             </div>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul id="nav-mobile" class="right hide-on-med-and-down ">
                 <li>
-                    <a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="tiny material-icons left">person</i> Mon compte<i class="material-icons right">arrow_drop_down</i>
+                    <a href="{{ path('index_admin') }}" class="light-blue-text text-lighten-2">Admin</a>
+                </li>
+                <li>
+                    <a class="dropdown-button light-blue-text text-lighten-2" href="#!" data-activates="dropdown1"><i class="tiny material-icons left">person</i> Mon compte<i class="material-icons right">arrow_drop_down</i>
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
-
+    </div>
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="#!">Inscription</a></li>
         <li class="divider"></li>
@@ -24,7 +34,7 @@
     </ul>
 </header>
 <aside class="left-side-bar">
-    <ul id="slide-out" class="side-nav fixed">
+    <ul id="slide-out" class="side-nav fixed z-depth-2">
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
                 <li class="bold">

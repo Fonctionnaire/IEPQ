@@ -48,7 +48,10 @@ class Tablettes
      */
     private $marque;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories\Categories")
+     */
+    private $categorie;
 
     /**
      *
@@ -64,6 +67,22 @@ class Tablettes
     public function __construct()
     {
         $this->avis = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param mixed $categorie
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
     }
 
     /**

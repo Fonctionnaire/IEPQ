@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <div class="container index-admin-container">
+        <hr>
+        <div class="row blue-grey lighten-5">
+            <div class="col s6 m6 l4 center">
+                <h5>Hôtels, restaurants & bars</h5>
+                <ul class="center">
+                    <li><a>Hôtels</a></li>
+                    <li><a href="{{ path('gestion_restaurants') }}">Restaurants</a></li>
+                    <li><a>Bars</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l4 center">
+                <h5>Informatique</h5>
+                <ul>
+                    <li><a></a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l4 center">
+                <h5>Smartphones & Tablettes</h5>
+                <ul>
+                    <li><a href="{{ path('gestion_smartphones') }}">Smartphones</a></li>
+                    <li><a href="{{ path('gestion_tablettes') }}">Tablettes</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="row blue-grey lighten-5">
+            <div class="col s6 m6 l4 center">
+                <h5>Télévisions & Home-Cinema</h5>
+                <ul>
+                    <li><a>Télévisions</a></li>
+                    <li><a>Home-Cinéma</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l4 center">
+                <h5>Photo & Caméras</h5>
+                <ul>
+                    <li><a>Photos</a></li>
+                    <li><a>Caméras</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l4 center">
+                <h5>Electroménager</h5>
+                <ul>
+                    <li><a></a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="row blue-grey lighten-5">
+            <div class="col s6 m6 l4 center">
+                <h5>Jeux vidéo & Consoles</h5>
+                <ul>
+                    <li><a>Consoles</a></li>
+                    <li><a>Jeux Vidéo</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -15,7 +15,11 @@ select
     z-index: 999;
 }
 
-
+.nav-logo img
+{
+    max-height: 65px !important;
+    margin-left: 10px !important;
+}
 
 .left-side-bar li
 {
@@ -30,7 +34,7 @@ select
 
 ul.side-nav
 {
-    margin-top: 65px;
+    margin-top: 66px;
 
 }
 
@@ -81,6 +85,18 @@ i.search-icone
     max-width: 100% !important;
     padding-left: 25px;
     padding-right: 25px;
+}
+
+.index-presentation h1
+{
+    font-size: 1.8em !important;
+    font-weight: bold;
+    margin-top: 10px !important;
+}
+
+.fb-like
+{
+    margin-bottom: 10px;
 }
 
 .index-cards img
@@ -141,6 +157,18 @@ i.search-icone
     padding-left: 25px;
     padding-right: 25px;
 }
+
+.index-admin-container li
+{
+    margin-top: 15px !important;
+}
+
+.index-admin-container .row
+{
+    margin-bottom: 10px !important;
+    padding-bottom: 15px !important;
+}
+
 
 /* MEDIA QUERIE */
 
