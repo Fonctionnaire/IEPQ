@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+{% block datatableScript %}
+    <!-- script for data tables -->
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script> -->
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.material.min.js"></script>
+    <script src="{{ asset('javascript/admintables.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <div class="container gestion-informatique-container">
+        <div class="row">
+            <div id="admin" class="col s12">
+                <div class="card material-table">
+                    <div class="table-header">
+                        <span class="table-title">Gestion des smartphones</span>
+                        <div class="actions">
+                            <a href="#" class="search-toggle waves-effect btn-flat nopadding">
+                                <i class="material-icons">search</i>
+                            </a>
+                        </div>
+                    </div>
+                    <table id="datatable">
+                        <thead>
+                        <tr>
+                            <th>Catégorie</th>
+                            <th>Marque</th>
+                            <th>Modèle</th>
+                            <th>Note</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for info in allInfo %}
+                            <tr>
+                                <td>{{ info.categorieInfo }}</td>
+                                <td>{{ info.marque.marque }}</td>
+                                <td>{{ info.model }}</td>
+                                {% if info.note %}
+                                    <td>{{ info.note }}</td>
+                                {% else %}
+                                    <td>Pas encore noté</td>
+                                {% endif %}
+                                <td></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% include ':Admin/Informatique:createInformatique.html.twig' %}
+    </div>
+{% endblock %}

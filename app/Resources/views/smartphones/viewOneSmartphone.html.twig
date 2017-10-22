@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+    <div class="container view-one-smart-controller">
+        {{ smartphone.marque.marque }}
+        {{ smartphone.model }}
+        {% if smartphone.note|length > 0 %}
+            {% set note = smartphone.note / smartphone.avis|length %}
+            {{ note|slice(0, 1) }}
+        {% endif %}
+        {{ smartphone.avis|length }}
+        <hr>
+        {{ form_start(form) }}
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

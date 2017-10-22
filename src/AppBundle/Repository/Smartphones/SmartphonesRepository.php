@@ -10,4 +10,15 @@ namespace AppBundle\Repository\Smartphones;
  */
 class SmartphonesRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getLastSmart()
+    {
+
+        return $this->createQueryBuilder('s')
+            ->where('s.valide = true')
+            ->orderBy('s.id', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult();
+    }
 }

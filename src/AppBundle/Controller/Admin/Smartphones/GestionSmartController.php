@@ -26,8 +26,7 @@ class GestionSmartController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $categories = $em->getRepository('AppBundle:Categories\Categories')->findOneById(3);
-            $smartphone->setCategorie($categories);
+            $smartphone->setValide(true);
             $em->persist($smartphone);
             $em->flush();
 

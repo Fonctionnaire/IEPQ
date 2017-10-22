@@ -1,17 +1,16 @@
 <?php
 
-namespace AppBundle\Entity\Categories;
+namespace AppBundle\Entity\Informatique;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Categories
+ * CategorieInfo
  *
- * @ORM\Table(name="categories_categories")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Categories\CategoriesRepository")
+ * @ORM\Table(name="informatique_categorie_info")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Informatique\CategorieInfoRepository")
  */
-class Categories
+class CategorieInfo
 {
     /**
      * @var int
@@ -25,13 +24,13 @@ class Categories
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="categorie", type="string", length=255)
      */
-    private $nom;
+    private $categorie;
 
     /**
      * @var string
-     * @Gedmo\Slug(fields={"nom"})
+     *
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
@@ -48,27 +47,27 @@ class Categories
     }
 
     /**
-     * Set nom
+     * Set categorie
      *
-     * @param string $nom
+     * @param string $categorie
      *
-     * @return Categories
+     * @return CategorieInfo
      */
-    public function setNom($nom)
+    public function setCategorie($categorie)
     {
-        $this->nom = $nom;
+        $this->categorie = $categorie;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get categorie
      *
      * @return string
      */
-    public function getNom()
+    public function getCategorie()
     {
-        return $this->nom;
+        return $this->categorie;
     }
 
     /**
@@ -76,7 +75,7 @@ class Categories
      *
      * @param string $slug
      *
-     * @return Categories
+     * @return CategorieInfo
      */
     public function setSlug($slug)
     {

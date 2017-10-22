@@ -2,6 +2,10 @@ header, main, footer {
     padding-left: 250px;
 }
 
+html
+{
+    font-family: 'Roboto', sans-serif;
+}
 
 select
 {
@@ -61,7 +65,7 @@ div.search
 
 input[type=search]:focus
 {
-    border-bottom: 3px solid #ef5350 !important;
+    border-bottom: 3px solid #64b5f6 !important;
 }
 
 .search-wrapper
@@ -83,8 +87,8 @@ i.search-icone
 {
     width: 100% !important;
     max-width: 100% !important;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
 }
 
 .index-presentation h1
@@ -94,9 +98,15 @@ i.search-icone
     margin-top: 10px !important;
 }
 
+
 .fb-like
 {
     margin-bottom: 10px;
+}
+
+.index-cards
+{
+    height: 300px !important;
 }
 
 .index-cards img
@@ -146,6 +156,52 @@ i.search-icone
     margin-bottom: 15px !important;
     font-size: 1.4em;
 
+}
+
+.index-explications a
+{
+    font-size: 0.8em;
+}
+
+#modal1 .col.s6:nth-child(1)
+{
+    border-right: 1px solid black;
+}
+
+#modal1 li
+{
+    margin-top: 15px;
+    font-size: 1.2em;
+}
+
+#modal1 h6
+{
+    margin-top: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.div-carousel
+{
+    border: 1px solid grey;
+    height: 360px !important;
+    border-radius: 3px;
+}
+
+.div-carousel div
+{
+    border-top: 1px solid grey;
+
+}
+
+.div-carousel h6
+{
+    font-size: 1.4em;
+}
+
+.div-carousel-note
+{
+    margin-top: 25px;
 }
 
 

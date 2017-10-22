@@ -1,17 +1,16 @@
 <?php
 
-namespace AppBundle\Entity\Tablettes;
+namespace AppBundle\Entity\Informatique;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * MarquesTablette
+ * MarqueInformatique
  *
- * @ORM\Table(name="tablettes_marques_tablette")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Tablettes\MarquesTabletteRepository")
+ * @ORM\Table(name="informatique_marque_informatique")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Informatique\MarqueInformatiqueRepository")
  */
-class MarquesTablette
+class MarqueInformatique
 {
     /**
      * @var int
@@ -31,32 +30,30 @@ class MarquesTablette
 
     /**
      * @var string
-     * @Gedmo\Slug(fields={"marque"})
+     *
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Tablettes\Tablettes", mappedBy="marque", cascade={"remove",
-     *     "persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Informatique\Informatique", mappedBy="marque", cascade={"remove", "persist"})
      */
-    private $tablettes;
-
+    private $informatique;
 
     /**
      * @return mixed
      */
-    public function getTablettes()
+    public function getInformatique()
     {
-        return $this->tablettes;
+        return $this->informatique;
     }
 
     /**
-     * @param mixed $tablettes
+     * @param mixed $informatique
      */
-    public function setTablettes($tablettes)
+    public function setInformatique($informatique)
     {
-        $this->tablettes = $tablettes;
+        $this->informatique = $informatique;
     }
 
     /**
@@ -74,7 +71,7 @@ class MarquesTablette
      *
      * @param string $marque
      *
-     * @return MarquesTablette
+     * @return MarqueInformatique
      */
     public function setMarque($marque)
     {
@@ -98,7 +95,7 @@ class MarquesTablette
      *
      * @param string $slug
      *
-     * @return MarquesTablette
+     * @return MarqueInformatique
      */
     public function setSlug($slug)
     {

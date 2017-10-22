@@ -10,4 +10,18 @@ namespace AppBundle\Repository\Restaurants;
  */
 class RestaurantsRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
+    public function getLastRestau()
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.valide = true')
+            ->orderBy('r.id', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
 }

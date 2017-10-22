@@ -48,41 +48,48 @@ class Tablettes
      */
     private $marque;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories\Categories")
-     */
-    private $categorie;
 
     /**
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Avis\Avis")
-     * @ORM\JoinTable(name="tablette_avis",
-     *      joinColumns={@ORM\JoinColumn(name="tablette_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="avis_id", referencedColumnName="id", unique=true)}
-     *      )
-     * @ORM\JoinColumn(nullable=true)
+     * @var bool
+     * @ORM\Column(name="valide", type="boolean")
+     */
+    private $valide = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Tablettes\AvisTablettes", mappedBy="tablette", cascade={"remove", "persist"})
      */
     private $avis;
-
-    public function __construct()
-    {
-        $this->avis = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * @return mixed
      */
-    public function getCategorie()
+    public function getAvis()
     {
-        return $this->categorie;
+        return $this->avis;
     }
 
     /**
-     * @param mixed $categorie
+     * @param mixed $avis
      */
-    public function setCategorie($categorie)
+    public function setAvis($avis)
     {
-        $this->categorie = $categorie;
+        $this->avis = $avis;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isValide()
+    {
+        return $this->valide;
+    }
+
+    /**
+     * @param bool $valide
+     */
+    public function setValide($valide)
+    {
+        $this->valide = $valide;
     }
 
     /**
@@ -101,21 +108,6 @@ class Tablettes
         $this->marque = $marque;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAvis()
-    {
-        return $this->avis;
-    }
-
-    /**
-     * @param mixed $avis
-     */
-    public function setAvis($avis)
-    {
-        $this->avis = $avis;
-    }
 
     /**
      * Get id

@@ -26,8 +26,7 @@ class GestionTablettesController extends Controller
         $form->handleRequest($request);
         if($form->isValid() && $form->isSubmitted())
         {
-            $categorie = $em->getRepository('AppBundle:Categories\Categories')->findOneById(5);
-            $tablette->setCategorie($categorie);
+            $tablette->setValide(true);
             $em->persist($tablette);
             $em->flush();
 

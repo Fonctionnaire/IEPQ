@@ -1,21 +1,19 @@
 <?php
 
-namespace AppBundle\Form\Categories;
+namespace AppBundle\Form\Informatique;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CategoriesType extends AbstractType
+class CategorieInfoType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('nom')
-        ;
+        $builder->add('categorie')->add('slug');
     }
     
     /**
@@ -24,7 +22,7 @@ class CategoriesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Categories\Categories'
+            'data_class' => 'AppBundle\Entity\Informatique\CategorieInfo'
         ));
     }
 
@@ -33,7 +31,7 @@ class CategoriesType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_categories_categories';
+        return 'appbundle_informatique_categorieinfo';
     }
 
 

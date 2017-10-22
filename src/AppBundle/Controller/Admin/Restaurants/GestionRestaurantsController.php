@@ -33,8 +33,7 @@ class GestionRestaurantsController extends Controller
 
         if($form->isValid() && $form->isSubmitted())
         {
-            $categorie = $em->getRepository('AppBundle:Categories\Categories')->findOneById(4);
-            $restaurant->setCategorie($categorie);
+            $restaurant->setValide(true);
             $em->persist($restaurant);
             $em->flush();
 

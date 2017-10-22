@@ -48,25 +48,35 @@ class Smartphones
      */
     private $marque;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories\Categories")
-     */
-    private $categorie;
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Avis\Avis")
-     * @ORM\JoinTable(name="smartphone_avis",
-     *      joinColumns={@ORM\JoinColumn(name="smartphone_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="avis_id", referencedColumnName="id", unique=true)}
-     *      )
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Smartphones\AvisSmartphones", mappedBy="smartphone", cascade={"remove", "persist"})
+     *
      */
     private $avis;
 
-    public function __construct()
+    /**
+     * @var bool
+     * @ORM\Column(name="valide", type="boolean")
+     */
+    private $valide = false;
+
+
+    /**
+     * @return bool
+     */
+    public function isValide()
     {
-        $this->avis = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->valide;
+    }
+
+    /**
+     * @param bool $valide
+     */
+    public function setValide($valide)
+    {
+        $this->valide = $valide;
     }
 
     /**
@@ -85,21 +95,6 @@ class Smartphones
         $this->avis = $avis;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-
-    /**
-     * @param mixed $categorie
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
-    }
 
     /**
      * @return mixed

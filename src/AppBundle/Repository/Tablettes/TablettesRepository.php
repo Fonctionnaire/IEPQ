@@ -10,4 +10,15 @@ namespace AppBundle\Repository\Tablettes;
  */
 class TablettesRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getLastTab()
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.valide = true')
+            ->orderBy('t.id', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

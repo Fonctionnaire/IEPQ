@@ -15,6 +15,17 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('index/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $lastSmart = $em->getRepository('AppBundle:Smartphones\Smartphones')->getLastSmart();
+        $lastRestau = $em->getRepository('AppBundle:Restaurants\Restaurants')->getLastRestau();
+        $lastTab = $em->getRepository('AppBundle:Tablettes\Tablettes')->getLastTab();
+
+        dump($lastRestau);
+
+        return $this->render('index/index.html.twig', array(
+            'lastSmart' => $lastSmart,
+            'lastRestau' => $lastRestau,
+            'lastTab' => $lastTab
+        ));
     }
 }

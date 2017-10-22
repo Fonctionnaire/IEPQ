@@ -72,43 +72,20 @@ class Restaurants
      */
     private $slug;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories\Categories")
-     */
-    private $categorie;
 
     /**
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Avis\Avis")
-     * @ORM\JoinTable(name="restaurant_avis",
-     *      joinColumns={@ORM\JoinColumn(name="restaurant_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="avis_id", referencedColumnName="id", unique=true)}
-     *      )
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Restaurants\AvisRestaurants", mappedBy="restaurant", cascade={"remove", "persist"})
      */
     private $avis;
 
 
-    public function __construct()
-    {
-        $this->avis = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
     /**
-     * @return mixed
+     * @var bool
+     * @ORM\Column(name="valide", type="boolean")
      */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
+    private $valide = false;
 
-    /**
-     * @param mixed $categorie
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
-    }
+
 
     /**
      * @return mixed
@@ -125,6 +102,23 @@ class Restaurants
     {
         $this->avis = $avis;
     }
+
+    /**
+     * @return bool
+     */
+    public function isValide()
+    {
+        return $this->valide;
+    }
+
+    /**
+     * @param bool $valide
+     */
+    public function setValide($valide)
+    {
+        $this->valide = $valide;
+    }
+
 
     /**
      * @return string
