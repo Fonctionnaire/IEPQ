@@ -10,4 +10,14 @@ namespace AppBundle\Repository\Informatique;
  */
 class InformatiqueRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getLastInfo()
+    {
+        return $this->createQueryBuilder('i')
+            ->where('i.valide = true')
+            ->orderBy('i.id', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

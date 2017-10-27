@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Informatique;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * CategorieInfo
@@ -30,7 +31,7 @@ class CategorieInfo
 
     /**
      * @var string
-     *
+     * @Gedmo\Slug(fields={"categorie"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;

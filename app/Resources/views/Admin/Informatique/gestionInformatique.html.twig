@@ -7,7 +7,7 @@
     <script src="{{ asset('javascript/admintables.js') }}"></script>
 {% endblock %}
 {% block content %}
-    <div class="container gestion-informatique-container">
+    <div class="container admin-gestion-container blue-grey lighten-4">
         <div class="row">
             <div id="admin" class="col s12">
                 <div class="card material-table">
@@ -32,7 +32,7 @@
                         <tbody>
                         {% for info in allInfo %}
                             <tr>
-                                <td>{{ info.categorieInfo }}</td>
+                                <td>{{ info.categorieInfo.categorie }}</td>
                                 <td>{{ info.marque.marque }}</td>
                                 <td>{{ info.model }}</td>
                                 {% if info.note %}

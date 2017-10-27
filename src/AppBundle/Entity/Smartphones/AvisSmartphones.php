@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class AvisSmartphones
 {
     /**
+     * Nombres d'articles par pages
+     */
+    const NUM_ITEMS = 5;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

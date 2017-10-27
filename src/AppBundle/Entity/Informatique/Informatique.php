@@ -54,6 +54,52 @@ class Informatique
      */
     private $categorieInfo;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="note", type="integer", nullable=true)
+     */
+    private $note;
+
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Informatique\AvisInformatique", mappedBy="produit", cascade={"remove", "persist"})
+     *
+     */
+    private $avis;
+
+    /**
+     * @return int
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param int $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvis()
+    {
+        return $this->avis;
+    }
+
+    /**
+     * @param mixed $avis
+     */
+    public function setAvis($avis)
+    {
+        $this->avis = $avis;
+    }
 
     /**
      * @return mixed

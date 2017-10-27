@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+    <div class="container view-one-tab-controller">
+        {{ form_start(form) }}
+        <div>
+            {{ form_label(form.note) }}
+            {{ form_widget(form.note) }}
+            {{ form_errors(form.note) }}
+        </div>
+        <div class="input-field">
+            {{ form_label(form.avis) }}
+            {{ form_widget(form.avis) }}
+            {{ form_errors(form.avis) }}
+        </div>
+        <div class="input-field">
+            {{ form_label(form.lieuAchat) }}
+            {{ form_widget(form.lieuAchat) }}
+            {{ form_errors(form.lieuAchat) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

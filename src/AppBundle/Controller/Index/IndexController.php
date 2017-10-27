@@ -19,13 +19,13 @@ class IndexController extends Controller
         $lastSmart = $em->getRepository('AppBundle:Smartphones\Smartphones')->getLastSmart();
         $lastRestau = $em->getRepository('AppBundle:Restaurants\Restaurants')->getLastRestau();
         $lastTab = $em->getRepository('AppBundle:Tablettes\Tablettes')->getLastTab();
-
-        dump($lastRestau);
+        $lastInfo = $em->getRepository('AppBundle:Informatique\Informatique')->getLastInfo();
 
         return $this->render('index/index.html.twig', array(
             'lastSmart' => $lastSmart,
             'lastRestau' => $lastRestau,
-            'lastTab' => $lastTab
+            'lastTab' => $lastTab,
+            'lastInfo' => $lastInfo
         ));
     }
 }

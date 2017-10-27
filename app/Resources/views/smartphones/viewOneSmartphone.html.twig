@@ -1,17 +1,128 @@
 {% extends 'layout.html.twig' %}
+{% block avisScript %}
+    <script src="{{ asset('javascript/modal.js') }}"></script>
+    <script src="{{ asset('javascript/pagination.js') }}"></script>
+{% endblock %}
 {% block content %}
 
-    <div class="container view-one-smart-controller">
-        {{ smartphone.marque.marque }}
-        {{ smartphone.model }}
-        {% if smartphone.note|length > 0 %}
-            {% set note = smartphone.note / smartphone.avis|length %}
-            {{ note|slice(0, 1) }}
-        {% endif %}
-        {{ smartphone.avis|length }}
+    <div class="container view-one-product-container white">
+        <div class="row">
+            <div class="col m12 l3">
+                <img src="{{ asset('images/mobile-phone-2104312_1920.jpg') }}" alt="{{ smartphone.model }}" class="view-one-product-img z-depth-2">
+            </div>
+            <div class="col m12 l9">
+                <h1 class="center">{{ smartphone.marque.marque }} - {{ smartphone.model }}</h1>
+
+                {% if smartphone.avis|length > 0 %}
+                    <div class="center">
+                        <div class="chip view-one-product-nb-avis light-blue lighten-2 white-text">
+                            {{ smartphone.avis|length }} avis
+                        </div>
+                    </div>
+                    <div class="view-one-product-note center">
+                        {% set note = smartphone.note / smartphone.avis|length %}
+                        {{ note|slice(0, 1) }} / 10
+                    </div>
+                    {% if note < 4 %}
+                        <div class="note-thumb center">
+                                <img src="{{ asset('images/dislike-157252_1280.png') }}" alt="negatif">
+                            </div>
+                    {% elseif note > 6 %}
+                        <div class="note-thumb center">
+                                <img src="{{ asset('images/hand-157251_1280.png') }}" alt="positif">
+                            </div>
+                    {% endif %}
+                    {% else %}
+                    <div class="view-one-product-note">
+                        <p>Pas encore d'avis. Soyez le premier à le votre.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
         <hr>
-        {{ form_start(form) }}
-        {{ form_rest(form) }}
-        {{ form_end(form) }}
+        <div class="center">
+            <a class="bouton-avis waves-effect waves-light btn modal-trigger light-blue lighten-2" href="#modal-avis">Donnez votre avis</a>
+        </div>
+        <div class="row">
+            {% for avis in listAvis %}
+                <div class="col s8 offset-s2 z-depth-2 avis blue-grey lighten-5">
+                    <div class="row">
+                        <div class="col s2">
+                            {% if avis.note > 5 %}
+                                <div class="avis-note valign-wrapper">
+                                    <p><span class="light-green-text text-darken-1">{{ avis.note }}</span> / 10</p>
+                                </div>
+                                {% elseif avis.note < 5 %}
+                                    <div class="avis-note valign-wrapper">
+                                       <p>
+                                           <span class="red-text text-darken-2">{{ avis.note }}</span> / 10
+                                       </p>
+                                    </div>
+                            {% endif %}
+                        </div>
+                        <div class="col s10">
+                            <p>Par le {{ avis.dateAjout|date('d-m-Y') }}</p>
+                            <hr>
+                            <p>{{ avis.avis }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Modal Structure -->
+        <div id="modal-avis" class="modal">
+            <div class="modal-content">
+                <a href="#!" class="right modal-action modal-close waves-effect waves-green btn-flat"><i class="medium material-icons">close</i></a>
+                <div class="row">
+                    {{ form_start(form) }}
+                    <div class="input-field">
+                        {{ form_label(form.lieuAchat) }}
+                        {{ form_widget(form.lieuAchat) }}
+                        {{ form_errors(form.lieuAchat) }}
+                    </div>
+                    <div class="input-field">
+                        {{ form_label(form.note) }}
+                        {{ form_widget(form.note) }}
+                        {{ form_errors(form.note) }}
+                    </div>
+                    <div class="input-field">
+                        {{ form_label(form.avis) }}
+                        {{ form_widget(form.avis) }}
+                        {{ form_errors(form.avis) }}
+                    </div>
+                    <div class="center">
+                        {{ form_widget(form.valider) }}
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+        {#pagination#}
+        <div class="row">
+            <ul class="col m11 pagination center-align">
+                {% if nbPages > 1 %}
+                    {% if page > 1 %}
+                        <li>
+                            <a class="chevron-gauche" href="{{ path('avis_smartphone_paginated', {'page': page - 1, 'slug': slug}) }}"> &lang; </a>
+                        </li>
+                    {% endif %}
+
+                    {% for p in range(1, nbPages) %}
+                        <li{% if p == page %} class="active"{% endif %}>
+                            <a href="{{ path('avis_smartphone_paginated', {'page': p, 'slug': slug}) }}" class="current-page">{{ p }}</a>
+                        </li>
+                    {% endfor %}
+                    {% if page < nbPages %}
+                        <li>
+                            <a href="{{ path('avis_smartphone_paginated', {'page': page + 1, 'slug': slug}) }}">
+                                &rang; </a>
+                        </li>
+                    {% endif %}
+
+                {% endif %}
+            </ul>
+        </div>
+
     </div>
 {% endblock %}

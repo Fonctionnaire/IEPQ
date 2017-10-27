@@ -2,6 +2,10 @@
 
 namespace AppBundle\Repository\Smartphones;
 
+use Appbundle\Entity\Smartphones\AvisSmartphones;
+use AppBundle\Entity\Smartphones\Smartphones;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * AvisSmartphonesRepository
  *
@@ -10,4 +14,35 @@ namespace AppBundle\Repository\Smartphones;
  */
 class AvisSmartphonesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAvisPaginated($page, Smartphones $smartphones)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.dateAjout <= :now')
+            ->andWhere('a.smartphone = :smartphones')
+            ->orderBy('a.dateAjout', 'DESC')
+            ->setParameter(':now', new \DateTime())
+            ->setParameter('smartphones', $smartphones->getId())
+        ;
+        $query = $qb->getQuery();
+        $query
+            // On définit l'article à partir duquel commencer la liste
+            ->setFirstResult(($page - 1) * AvisSmartphones::NUM_ITEMS)
+            // Ainsi que le nombre d'annonce à afficher sur une page
+            ->setMaxResults(AvisSmartphones::NUM_ITEMS);
+        // Enfin, on retourne l'objet Paginator correspondant à la requête construite
+        return new Paginator($query, true);
+    }
+
+    public function findAllDsc()
+    {
+        return $this->findBy(array(), array('dateAjout' => 'DESC'));
+    }
+
+    public function countAll()
+    {
+        return $this->createQueryBuilder('a')
+            ->select('COUNT(a)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

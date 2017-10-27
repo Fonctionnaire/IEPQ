@@ -11,6 +11,7 @@
     <script src="{{ asset('javascript/modal.js') }}"></script>
     <script src="{{ asset('javascript/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('javascript/carousel.js') }}"></script>
+    <script src="{{ asset('javascript/chip.js') }}"></script>
 {% endblock %}
 {% block content %}
     <div class="container index-container">
@@ -91,28 +92,42 @@
                     </div>
                 </div>
                 <div class="owl-carousel">
+
                     {% for smart in lastSmart %}
+                    <a href="{{ path('view_one_smartphone', {'slug': smart.slug}) }}">
                     <div class="div-carousel blue-grey lighten-5 z-depth-2">
                         <img src="{{ asset('images/mobile-phone-2104312_1920.jpg') }}">
+                        <div class="chip nb-avis light-blue lighten-2 white-text">
+                            {{ smart.avis|length }} avis
+                        </div>
+                        <div class="chip carousel-categories blue-grey darken-3 white-text">
+                            Smartphones
+                        </div>
+
                         <div>
                             <h6 class="center">{{ smart.marque.marque }} - {{ smart.model }}</h6>
-
+                            {% if smart.avis|length > 0 %}
                             <p class="center div-carousel-note">
-                                {% if smart.avis|length > 0 %}
                                     {% set note = smart.note / smart.avis|length %}
-                                    {{ note|slice(0, 1) }}
-                                    -
-                                    {{ smart.avis|length }} avis
-                                {% else %}
-                                    Pas encore d'avis
-                                {% endif %}
+                                    {{ note|slice(0, 1) }} / 10
                             </p>
+                            {% else %}
+                                <p class="center div-carousel-note">Pas encore noté</p>
+                            {% endif %}
                         </div>
+
                     </div>
+                    </a>
                     {% endfor %}
                     {% for restau in lastRestau %}
                     <div class="div-carousel z-depth-2 blue-grey lighten-5">
                         <img src="{{ asset('images/place-setting-1056286_1920.jpg') }}">
+                        <div class="chip nb-avis light-blue lighten-2 white-text">
+                            {{ restau.avis|length }} avis
+                        </div>
+                        <div class="chip carousel-categories blue-grey darken-3 white-text">
+                            Restaurants
+                        </div>
                         <div>
                             <h6 class="center">{{ restau.nom }}</h6>
                             <p class="center">{{ restau.ville }} - {{ restau.cp }}</p>
@@ -130,6 +145,12 @@
                     {% for tab in lastTab %}
                         <div class="div-carousel z-depth-2 blue-grey lighten-5">
                             <img src="{{ asset('images/tablette.jpg') }}">
+                            <div class="chip nb-avis light-blue lighten-2 white-text">
+                                {{ tab.avis|length }} avis
+                            </div>
+                            <div class="chip carousel-categories blue-grey darken-3 white-text">
+                                Tablettes
+                            </div>
                             <div>
                                 <h6 class="center">{{ tab.marque.marque }} - {{ tab.model }}</h6>
                                 <p class="center div-carousel-note">
@@ -142,9 +163,31 @@
                             </div>
                         </div>
                     {% endfor %}
+                    {% for info in lastInfo %}
+                        <div class="div-carousel z-depth-2 blue-grey lighten-5">
+                            <img src="{{ asset('images/computer-1245714_1920.jpg') }}">
+                            <div class="chip nb-avis light-blue lighten-2 white-text">
+                                {{ info.avis|length }} avis
+                            </div>
+                            <div class="chip carousel-categories blue-grey darken-3 white-text">
+                                Informatique
+                            </div>
+                            <div>
+                                <div class="chip categorie-info black white-text">
+                                    {{ info.categorieInfo.categorie }}
+                                </div>
+                                <h6 class="center">{{ info.marque.marque }} - {{ info.model }}</h6>
+                                <p class="center div-carousel-note">
+                                    {% if info.avis|length > 0 %}
+                                        {{ info.note }} - {{ info.avis|length }} avis
+                                    {% else %}
+                                        Pas encore d'avis
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-
-
             </div>
         </section>
     </div>

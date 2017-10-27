@@ -3,7 +3,7 @@
 namespace AppBundle\Entity\Informatique;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * MarqueInformatique
  *
@@ -30,7 +30,7 @@ class MarqueInformatique
 
     /**
      * @var string
-     *
+     * @Gedmo\Slug(fields={"marque"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
